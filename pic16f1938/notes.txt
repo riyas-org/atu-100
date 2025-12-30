@@ -1,0 +1,37 @@
+#sudo docker 
+Command,Purpose
+docker build -t mplab .,Builds the image and tags it as mplab.
+docker build --no-cache -t mplab .,Rebuilds from scratch (ignoring saved layers).
+docker images,Lists all images on your machine to verify the size.
+
+#usage
+
+Command,Purpose
+docker run --rm -it mplab,Runs the container interactively and deletes it upon exit.
+docker run --rm -it -v $(pwd):/prj mplab,Runs while mounting your current folder to /prj.
+docker run --rm -it --entrypoint bash mplab,"Forces a bash shell, bypassing the default script."
+docker ps,Shows currently running containers.
+
+#cleaning
+# Deletes all stopped containers
+docker container prune
+
+# Deletes "dangling" images (failed builds)
+docker image prune
+
+
+
+
+
+
+
+#sudo docker system prune -a
+docker run --rm -v "$(pwd)":/project pic-compiler bash -c "\
+    prjMakefilesGenerator -v . && \
+    make -f nbproject/Makefile-default.mk SUBPROJECTS= .build-conf"
+docker run --rm -it \
+  -v "$(pwd):/project" \
+  -w /project \
+  --entrypoint /bin/bash \
+  mplab-final
+sudo du -ah / | sort -rh | head -n 20
