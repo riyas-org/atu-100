@@ -12,7 +12,7 @@ jobs:
       - name: Download the source code
         uses: actions/checkout@v1
       - name: Build
-        uses: riyas-org/mplabx-xc8-build-action
+        uses: riyas-org/mplabx-xc8-build-action@v1
         with:
           project: ATU-100_YAF.X
           configuration: default
