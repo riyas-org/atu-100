@@ -227,7 +227,8 @@ void main(void)
       tick_10ms=0;
       //10ms 
 
-      BUTTON_Run();
+     //DISABLE JUST FOR TESTING RV 
+     //BUTTON_Run();
       MENU_Run();
      
       
